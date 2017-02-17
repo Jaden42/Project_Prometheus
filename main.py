@@ -1,6 +1,7 @@
 import math
 import random
 import thesaurus
+import sentence_analysis
 
 
 # This will create a random greeting and bias that greeting so it is more likely to be used in the future.
@@ -10,6 +11,7 @@ def greeting():
         prob = random.randint(thesaurus.greetings[phrase], 10)
         if prob == 10:
             result = phrase
+            break
     if result == "":
         greeting()
     elif result != "":
@@ -19,4 +21,7 @@ def greeting():
 
 
 print(greeting())
-print(thesaurus.greetings)
+
+while True:
+    userInput = input().lower()
+    sentence_analysis.analyze(userInput, sentence_analysis.sentenceSubject, sentence_analysis.sentenceVerb, sentence_analysis.sentenceObject)
