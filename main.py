@@ -5,22 +5,22 @@ import sentence_analysis
 
 
 # This will create a random greeting and bias that greeting so it is more likely to be used in the future.
-def greeting():
+def baisedspeech(dict):
     result = ""
-    for phrase in thesaurus.greetings.keys():
-        prob = random.randint(thesaurus.greetings[phrase], 10)
+    for phrase in dict.keys():
+        prob = random.randint(dict[phrase], 10)
         if prob == 10:
             result = phrase
             break
     if result == "":
-        greeting()
+        baisedspeech(dict)
     elif result != "":
-        if thesaurus.greetings[phrase] < 8:
-            thesaurus.greetings[phrase] += 1
+        if dict[result] < 8:
+            dict[result] += 1
         return result
 
 
-print(greeting())
+print(baisedspeech(thesaurus.greetings))
 
 while True:
     userInput = input().lower()
