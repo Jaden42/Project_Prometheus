@@ -6,3 +6,5 @@ adjectives = []
 
 # This will house all of the vocabulary Alan knows along with an intensity value for testing connotation.
 vocab = {}
+
+
