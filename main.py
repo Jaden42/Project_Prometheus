@@ -26,4 +26,7 @@ print(baisedspeech(thesaurus.greetings))
 
 while True:
     userInput = input().lower()
-    sentence_analysis.analyze(userInput, sentence_analysis.sentenceSubject, sentence_analysis.sentenceVerb, sentence_analysis.sentenceObject)
+    print(sentence_analysis.findSubject(userInput))
+    print(sentence_analysis.findVerb(userInput))
+    print(sentence_analysis.findObject(userInput))
+    print(sentence_analysis.identifyConnotation(userInput))
