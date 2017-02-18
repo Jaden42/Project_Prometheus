@@ -4,28 +4,26 @@ import thesaurus
 import sentence_analysis
 
 
+# This will choose a random word or phrase and bias that phrase so it is more likely to be used in the future.
+def baisedspeech(dict):
+    result = None
+    for phrase in dict.keys():
+        prob = random.randint(dict[phrase], 10)
+        if prob == 10:
+            result = phrase
+            break
+    if result is None:
+        print('try again')
+        baisedspeech(dict)
+    else:
+        if dict[result] < 8:
+            dict[result] += 1
+        print('got result')
+        return result
 
 
-
-def keyStroke():
-    key = str(input())
-    return key
-
-
-def biasedspeech(dictionary):
-    weightIndex = 0
-    totalWeight = 0
-    for n in dictionary.values():
-        totalWeight += n
-    choice = random.randint(1, totalWeight)
-    for phrase in dictionary:
-        weightIndex += dictionary[phrase]
-        if weightIndex >= choice:
-            dictionary[phrase] += 1
-            return phrase
-
-
-print(biasedspeech(thesaurus.greetings))
+print(baisedspeech(thesaurus.greetings))
 
 while True:
-    userInput = str(input()).lower()
+    userInput = input().lower()
+    sentence_analysis.analyze(userInput, sentence_analysis.sentenceSubject, sentence_analysis.sentenceVerb, sentence_analysis.sentenceObject)
