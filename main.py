@@ -4,7 +4,7 @@ import thesaurus
 import sentence_analysis
 
 
-# This will create a random greeting and bias that greeting so it is more likely to be used in the future.
+# This will choose a random word or phrase and bias that phrase so it is more likely to be used in the future.
 def baisedspeech(dict):
     result = None
     for phrase in dict.keys():
@@ -13,10 +13,12 @@ def baisedspeech(dict):
             result = phrase
             break
     if result is None:
+        print('try again')
         baisedspeech(dict)
-    elif result != "":
+    else:
         if dict[result] < 8:
             dict[result] += 1
+        print('got result')
         return result
 
 
