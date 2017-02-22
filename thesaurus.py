@@ -6,3 +6,7 @@ adjectives = ['lazy', 'quick']
 
 # This will house all of the vocabulary Alan knows along with an intensity value for testing connotation.
 vocab = {}
+
+fillerWords = ['at', 'the', 'in', 'to', 'with', 'and', 'went', 'do', 'have', 'for', 'is']
+
+questionWords = ['who', 'what', 'where', 'when', 'why', 'how']

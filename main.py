@@ -1,4 +1,3 @@
-import math
 import random
 import thesaurus
 import sentence_analysis
@@ -21,8 +20,29 @@ def biasedspeech(dictionary):
 print(biasedspeech(thesaurus.greetings))
 
 while True:
+    # Take user input
     userInput = input().lower()
-    print(sentence_analysis.findSubject(userInput))
-    print(sentence_analysis.findVerb(userInput))
-    print(sentence_analysis.findObject(userInput))
+
+    # Initialize variables
+    subject = ''
+    verb = ''
+    obj = ''
+
+    # Identify parts of speech in the sentence
+    for word in sentence_analysis.analyzeSentence(userInput):
+        if word in thesaurus.nouns:
+            subject = word
+            break
+    for word in sentence_analysis.analyzeSentence(userInput):
+        if word in thesaurus.verbs:
+            verb = word
+            break
+    for word in sentence_analysis.analyzeSentence(userInput):
+        if word in thesaurus.nouns and word != subject:
+            obj = word
+
+    print(subject)
+    print(verb)
+    print(obj)
+
     print(sentence_analysis.identifyConnotation(userInput))

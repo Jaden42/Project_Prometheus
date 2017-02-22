@@ -1,39 +1,15 @@
 import thesaurus
 
-sentenceSubject = ''
-sentenceVerb = ''
-sentenceObject = ''
-
-
-def findSubject(userInput):
+def analyzeSentence(userInput):
     sentence = userInput.split()
-    subject = ''
+    SVO = sentence
     for word in sentence:
-        for noun in thesaurus.nouns:
-            if word == noun and subject == '':
-                subject = word
-                break
-    return subject
-
-
-def findVerb(userInput):
-    sentVerb = ''
-    for word in userInput.split():
-        for verb in thesaurus.verbs:
-            if word == verb and sentVerb == '':
-                sentVerb = word
-                break
-    return sentVerb
-
-
-def findObject(userInput):
-    sentObject = ''
-    for word in userInput.split():
-        for thing in thesaurus.nouns:
-            if word == thing and sentObject == '' and word != findSubject(userInput):
-                sentObject = word
-                break
-    return sentObject
+        if word in thesaurus.fillerWords:
+            SVO.remove(word)
+    for word in SVO:
+        if word in thesaurus.questionWords:
+            SVO.remove(word)
+    return SVO
 
 
 def identifyConnotation(userInput):
